@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  downloader:
+    build: downloader
+    environment:
+      - RPCPORT=13001
+      - RPCSECRET=TEST123
+    volumes:
+      - ./downloader/conf:/conf
+      - ./downloader/log:/log
+      - ./downloader/run:/run
+      - ./downloader/data:/data
+    network_mode: host
+  controller:
+    build: controller
+    network_mode: host
+    volumes:
+      - ./controller/conf:/conf
+      - ./controller/logs:/logs
+      - ./controller/www:/var/www
+

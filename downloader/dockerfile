@@ -1,0 +1,10 @@
+FROM alpine:latest
+
+LABEL maintainer="sn0b4ll"
+
+RUN echo "test" > ~/test
+
+RUN apk add --update --no-cache tor bash aria2 tzdata privoxy
+
+CMD ["/run/run_aria2.sh"]
+
