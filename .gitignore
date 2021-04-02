@@ -1,2 +1,2 @@
-downloader/data/*		# Don't leak your downloads to GH
-downloader/conf/privoxy.conf	# Generated on runtime
+/downloader/data/*		# Don't leak your downloads to GH
+/downloader/conf/privoxy*	# Generated on runtime
