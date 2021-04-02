@@ -4,3 +4,11 @@ Exception: [SocketCore.cc:312] errorCode=1 Failed to bind a socket, cause: Name 
 2021-03-31 18:43:55.488252 [WARN] [DownloadEngineFactory.cc:198] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
 2021-03-31 21:45:25.355669 [WARN] [DownloadEngineFactory.cc:198] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
 2021-03-31 21:47:13.662808 [WARN] [DownloadEngineFactory.cc:198] Neither --rpc-secret nor a combination of --rpc-user and --rpc-passwd is set. This is insecure. It is extremely recommended to specify --rpc-secret with the adequate secrecy or now deprecated --rpc-user and --rpc-passwd.
+2021-04-02 14:39:36.487901 [ERROR] [AbstractCommand.cc:349] CUID#11 - Download aborted. URI=http://3ws3t4uo7fehnn4qpmadk3zjrxta5xlt3gsc5mx4sztrsy7ficuz5ayd.onion/EDAG/5.zip
+Exception: [AbstractCommand.cc:351] errorCode=3 URI=http://3ws3t4uo7fehnn4qpmadk3zjrxta5xlt3gsc5mx4sztrsy7ficuz5ayd.onion/EDAG/5.zip
+  -> [HttpSkipResponseCommand.cc:218] errorCode=3 Resource not found
+2021-04-02 14:39:49.227885 [ERROR] [AbstractCommand.cc:349] CUID#12 - Download aborted. URI=http://3ws3t4uo7fehnn4qpmadk3zjrxta5xlt3gsc5mx4sztrsy7ficuz5ayd.onion/EDAG/5.zip
+Exception: [AbstractCommand.cc:351] errorCode=3 URI=http://3ws3t4uo7fehnn4qpmadk3zjrxta5xlt3gsc5mx4sztrsy7ficuz5ayd.onion/EDAG/5.zip
+  -> [HttpSkipResponseCommand.cc:218] errorCode=3 Resource not found
+2021-04-02 14:48:31.132914 [ERROR] [AbstractCommand.cc:377] CUID#26 - Download aborted. URI=http://3ws3t4uo7fehnn4qpmadk3zjrxta5xlt3gsc5mx4sztrsy7ficuz5ayd.onion/EDAG/3.zip
+Exception: [AbstractCommand.cc:340] errorCode=2 Timeout.
