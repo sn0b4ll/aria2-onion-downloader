@@ -6,6 +6,8 @@ services:
     environment:
       - RPCPORT=13001
       - RPCSECRET=TEST123
+      - TORPORT=14001
+      - PRIVOPORT=15001
     volumes:
       - ./downloader/conf:/conf
       - ./downloader/log:/log
