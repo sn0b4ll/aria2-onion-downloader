@@ -6,6 +6,7 @@ services:
     environment:
       - RPCPORT=13001
       - RPCSECRET=TEST123
+      - TORSERVNUM=10
     volumes:
       - ./downloader/conf:/conf
       - ./downloader/log:/log

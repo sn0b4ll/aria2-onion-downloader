@@ -7,15 +7,15 @@ touch /log/logs.txt
 #echo "forward-socks4a / localhost:${TORPORT} .
 #listen-address 127.0.0.1:${PRIVOPORT}" > /conf/privoxy.conf
 
-max=9
-for i in `seq 1 $max`
+max=${TORSERVNUM}
+for i in `seq 01 $max`
 do
 	echo "Creatin $i"
-	echo "forward-socks4a / localhost:1400$i .
-	listen-address 127.0.0.1:1500$i" > /conf/privoxy$i.conf
+	echo "forward-socks4a / localhost:140$i .
+	listen-address 127.0.0.1:150$i" > /conf/privoxy$i.conf
 
-	mkdir -p /var/lib/tor/1400$i
-	tor --runasdaemon 1 --SOCKSPort 1400$i --ControlPort 1410$i --DataDirectory /var/lib/1400$i
+	mkdir -p /var/lib/tor/140$i
+	tor --runasdaemon 1 --SOCKSPort 140$i --ControlPort 141$i --DataDirectory /var/lib/140$i
 	privoxy /conf/privoxy$i.conf 
 done
 
