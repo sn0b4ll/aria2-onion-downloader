@@ -12,12 +12,17 @@ services:
       - ./downloader/log:/log
       - ./downloader/run:/run
       - ./downloader/data:/data
-    network_mode: host
+        # network_mode: host
+    ports:
+      - 127.0.0.1:13001:13001
+
   controller:
     build: controller
-    network_mode: host
+    # network_mode: host
     volumes:
       - ./controller/conf:/conf
       - ./controller/logs:/logs
       - ./controller/www:/var/www
+    ports:
+      - 127.0.0.1:9006:9006
 
