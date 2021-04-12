@@ -13,6 +13,9 @@ When you open the Web-UI, you should adjust the RPC-Port to 13001 on localhost, 
 
 Your downloads will be in `./downloader/data/`.
 
+## Why keep two containers
+Yeah, the web-ui could be easily integrated into the downloader-instance. This way you would save some resources BUT in the layout it is right now, you could simply spawn multiple downloader simply by copying the corresponding lines in the docker-compose-file, resulting in even higher download rates. If you want to integrate the web-ui in the downloader, simply copy the www-dir from the controller to downloader, add the folder in the docker-compose, and add the lines from the nginx.conf of the controller to the downloader.
+
 ## Credits
 This dockerfile really helped me in the creation of this solution:
 https://github.com/abcminiuser/docker-aria2-with-webui
