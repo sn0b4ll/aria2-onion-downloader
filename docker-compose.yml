@@ -4,7 +4,7 @@ services:
   downloader:
     build: downloader
     environment:
-      - RPCPORT=13001
+      - RPCPORT=6800
       - RPCSECRET=TEST123
       - TORSERVNUM=50
     volumes:
@@ -14,7 +14,7 @@ services:
       - ./downloader/data:/data
         # network_mode: host
     ports:
-      - 127.0.0.1:13001:13001
+      - 127.0.0.1:6800:6800
 
   controller:
     build: controller
@@ -24,5 +24,5 @@ services:
       - ./controller/logs:/logs
       - ./controller/www:/var/www
     ports:
-      - 127.0.0.1:9006:9006
+      - 127.0.0.1:8080:8080
 
