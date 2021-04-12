@@ -1,4 +1,4 @@
-downloader/data/*		# Don't leak your downloads to GH
+# downloader/data/*		# Don't leak your downloads to GH
 **/privoxy*.conf	# Generated on runtime
 downloader/log/*
 downloader/conf/aria2.session

@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL maintainer="sn0b4ll"
 
-RUN apk add --update --no-cache tor bash aria2 tzdata privoxy vim
+RUN apk add --update --no-cache tor bash aria2 tzdata privoxy vim nginx nginx-mod-stream
 
 CMD ["/run/run_aria2.sh"]
 
