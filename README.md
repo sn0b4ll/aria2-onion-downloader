@@ -12,7 +12,7 @@ First, always change the RPCSECRET in `docker-compose.yml`.
 
 Afterwards you can run `docker-compose up`, which will start 2 containers, an controller and an downloader with ports bound to localhost. 13001 is the RPC-Port of the downloader, 9006 is the Web-UI. If you want to expose these ports to the internet, just change the port assignment in the `docker-compose.yml` but again, make sure you changed the secret first!
 
-When you open the Web-UI via `http://localhost:9006`, you should first navigate to `AriaNg Settings` and adjust in the tab RPC the `Aria2 RPC Alias` to `localhost:6800` and set the correct RPCSECRET. Afterwards you can add downloads. When you add an download, hit options, enable the checkbox left to `Http` and enter `localhost:16001` (the port of the load-balancer) on `Proxy Server` to start a download via that service. For better download rates of course it makes sense to load-balance between the services accordingly.
+When you open the Web-UI via `http://localhost:9006`, you should first navigate to `AriaNg Settings` and adjust in the tab RPC the `Aria2 RPC Address` to `localhost` and `13001` and set the correct RPCSECRET. Afterwards you can add downloads. When you add an download, hit options, enable the checkbox left to `Http` and enter `localhost:16001` (the port of the load-balancer) on `Proxy Server` to start a download via that service. For better download rates of course it makes sense to load-balance between the services accordingly.
 
 Your downloads will be in `./downloader/data/`.
 
