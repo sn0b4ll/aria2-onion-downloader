@@ -28,7 +28,7 @@ do
 	listen-address 127.0.0.1:150$i" > /conf/privoxy$i.conf
 
 	mkdir -p /var/lib/tor/140$i
-	tor --runasdaemon 1 --SOCKSPort 140$i --ControlPort 141$i --DataDirectory /var/lib/140$i
+	tor --runasdaemon 1 --SOCKSPort 140$i --DataDirectory /var/lib/140$i
 	privoxy /conf/privoxy$i.conf 
 
 	# Nginx config middle part
