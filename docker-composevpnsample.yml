@@ -1,0 +1,38 @@
+version: "3.3"
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+    #Go Here For Adding VPN Environment Variables https://github.com/qdm12/gluetun
+      - VPN_SERVICE_PROVIDER=PROVIDER
+      - OPENVPN_USER=USERNAME
+      - OPENVPN_PASSWORD=PASSWORD
+      - SERVER_COUNTRIES=COUNTRY
+    ports:
+      - 127.0.0.1:6800:6800
+      - 127.0.0.1:8080:8080
+
+  downloader:
+    build: downloader
+    environment:
+      - RPCPORT=6800
+      - RPCSECRET=TEST123
+      - TORSERVNUM=50
+    volumes:
+      - ./downloader/conf:/conf
+      - ./downloader/log:/log
+      - ./downloader/run:/run
+      - ./downloader/data:/data
+    network_mode: "service:gluetun"
+
+  controller:
+    build: controller
+    network_mode: "service:gluetun"
+    volumes:
+      - ./controller/conf:/conf
+      - ./controller/logs:/logs
+      - ./controller/www:/var/www
+
