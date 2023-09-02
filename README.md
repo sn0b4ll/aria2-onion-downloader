@@ -19,6 +19,10 @@ Your downloads will be in `./downloader/data/`.
 ## Why keep two containers
 Yeah, the web-ui could be easily integrated into the downloader-instance. This way you would save some resources BUT in the layout it is right now, you could simply spawn multiple downloader simply by copying the corresponding lines in the docker-compose-file and adding them as RPCs in aria2, resulting in even higher download rates. If you want to integrate the web-ui in the downloader, simply copy the www-dir from the controller to downloader, add the folder in the docker-compose, and add the lines from the nginx.conf of the controller to the downloader.
 
+## VPN-Config
+If you want your containers to use a vpn, user the `docker-composevpnsample.yml` instead of the typical docker-compose file.
+
 ## Credits
 - This dockerfile really helped me in the creation of this solution: https://github.com/abcminiuser/docker-aria2-with-webui
 - [@unconfigured]( https://github.com/unconfigured ) for the load-balancing idea
+- [@reece394](https://github.com/reece394) for the addition of v2ray and the vpn-config
