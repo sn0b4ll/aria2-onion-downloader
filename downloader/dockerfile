@@ -11,10 +11,8 @@ RUN apk add --update --no-cache bash tor tzdata vim autoconf build-base git libg
 && rm -f /home/500retry.patch && rm -f /home/slowretry.patch && rm -f /home/removeconnlimit.patch && rm -f /home/connclosed.patch && rm -f /home/install-release.sh \
 && cd /home/aria2 && autoreconf -i && ./configure && make -j`nproc` && make install && rm -rf /home/aria2 \
 && apk del autoconf build-base git libtool gnutls-dev libssh2-dev c-ares-dev libxml2-dev sqlite-dev automake cppunit-dev util-macros gettext-dev zlib-dev curl unzip \
-&& apk add --update --no-cache python3 py3-pip && cd /home && mkdir creatorrc && cd /home/creatorrc && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/creatorrc.py \
+&& apk add --update --no-cache python3 py3-stem && cd /home && mkdir creatorrc && cd /home/creatorrc && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/creatorrc.py \
 && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/guard_country_resolver.py
-
-RUN pip install stem 
 
 CMD ["/run/run_aria2.sh"]
 
