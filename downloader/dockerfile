@@ -6,13 +6,14 @@ COPY *.patch /home/
 
 COPY --chmod=777 install-release.sh /home/
 
-RUN apk add --update --no-cache bash tor tzdata vim autoconf build-base git libgcc gmp libtool gnutls gnutls-dev nettle libssh2 libssh2-dev ca-certificates c-ares c-ares-dev libxml2 libxml2-dev sqlite-libs sqlite-dev automake cppunit cppunit-dev util-macros gettext gettext-dev zlib zlib-dev curl unzip \
+RUN apk add --update --no-cache bash tzdata vim autoconf build-base git libgcc gmp libtool gnutls gnutls-dev nettle libssh2 libssh2-dev ca-certificates c-ares c-ares-dev libxml2 libxml2-dev sqlite-libs sqlite-dev automake cppunit cppunit-dev util-macros gettext gettext-dev zlib zlib-dev curl unzip libcap2 libcap-dev libevent libevent-dev libseccomp libseccomp-dev libssl3 openssl-dev>3 xz-dev zstd-libs \
 && /home/install-release.sh && git clone https://github.com/aria2/aria2.git /home/aria2 && patch /home/aria2/src/HttpSkipResponseCommand.cc < /home/500retry.patch && patch /home/aria2/src/DownloadCommand.cc < /home/slowretry.patch && patch /home/aria2/src/OptionHandlerFactory.cc < /home/removeconnlimit.patch && patch /home/aria2/src/SocketBuffer.cc < /home/connclosed.patch \
 && rm -f /home/500retry.patch && rm -f /home/slowretry.patch && rm -f /home/removeconnlimit.patch && rm -f /home/connclosed.patch && rm -f /home/install-release.sh \
-&& cd /home/aria2 && autoreconf -i && ./configure && make -j`nproc` && make install && rm -rf /home/aria2 \
-&& apk del autoconf build-base git libtool gnutls-dev libssh2-dev c-ares-dev libxml2-dev sqlite-dev automake cppunit-dev util-macros gettext-dev zlib-dev curl unzip \
+&& cd /home/aria2 && autoreconf -i && ./configure && make -j`nproc` && make install && rm -rf /home/aria2 && cd / && git clone https://gitlab.torproject.org/tpo/core/tor.git /home/tor && patch /home/tor/src/core/or/or.h < /home/routelen.patch && rm -f /home/routelen.patch \
+&& cd /home/tor && ./autogen.sh && ./configure --disable-asciidoc && make -j`nproc` && make install \
+&& apk del autoconf build-base git libtool gnutls-dev libssh2-dev c-ares-dev libxml2-dev sqlite-dev automake cppunit-dev util-macros gettext-dev zlib-dev curl unzip libcap-dev libevent-dev libseccomp-dev openssl-dev>3 xz-dev \
 && apk add --update --no-cache python3 py3-stem && cd /home && mkdir creatorrc && cd /home/creatorrc && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/creatorrc.py \
-&& aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/guard_country_resolver.py
+&& aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/guard_country_resolver.py && rm -rf /home/tor
 
 CMD ["/run/run_aria2.sh"]
 
