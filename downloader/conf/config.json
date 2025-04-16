@@ -1,691 +1,700 @@
 {
-    "log": {
-      "loglevel": "warning"
-    },
-    "inbounds": [
-      {
-        "port": 16001,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls"
-          ]
-        }
+  "log": {
+    "access": "/log/v2ray_access.log",
+    "error": "/log/v2ray_error.log",
+    "loglevel": "debug"
+  },
+  "inbounds": [
+    {
+      "port": 16001,
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "streamSettings": {
+        "network": "tcp",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "allowInsecureCiphers": true
+        }  
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
       }
-    ],
-    "outbounds": [
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.1",
-        "tag": "tor-1",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.2",
-        "tag": "tor-2",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.3",
-        "tag": "tor-3",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.4",
-        "tag": "tor-4",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.5",
-        "tag": "tor-5",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.6",
-        "tag": "tor-6",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.7",
-        "tag": "tor-7",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.8",
-        "tag": "tor-8",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.9",
-        "tag": "tor-9",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.10",
-        "tag": "tor-10",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.11",
-        "tag": "tor-11",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.12",
-        "tag": "tor-12",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.13",
-        "tag": "tor-13",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.14",
-        "tag": "tor-14",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.15",
-        "tag": "tor-15",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.16",
-        "tag": "tor-16",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.17",
-        "tag": "tor-17",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.18",
-        "tag": "tor-18",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.19",
-        "tag": "tor-19",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.20",
-        "tag": "tor-20",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.21",
-        "tag": "tor-21",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.22",
-        "tag": "tor-22",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.23",
-        "tag": "tor-23",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.24",
-        "tag": "tor-24",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.25",
-        "tag": "tor-25",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.26",
-        "tag": "tor-26",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.27",
-        "tag": "tor-27",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.28",
-        "tag": "tor-28",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.29",
-        "tag": "tor-29",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.30",
-        "tag": "tor-30",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.31",
-        "tag": "tor-31",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.32",
-        "tag": "tor-32",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.33",
-        "tag": "tor-33",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.34",
-        "tag": "tor-34",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.35",
-        "tag": "tor-35",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.36",
-        "tag": "tor-36",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.37",
-        "tag": "tor-37",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.38",
-        "tag": "tor-38",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.39",
-        "tag": "tor-39",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.40",
-        "tag": "tor-40",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.41",
-        "tag": "tor-41",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.42",
-        "tag": "tor-42",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.43",
-        "tag": "tor-43",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.44",
-        "tag": "tor-44",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.45",
-        "tag": "tor-45",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.46",
-        "tag": "tor-46",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.47",
-        "tag": "tor-47",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.48",
-        "tag": "tor-48",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.49",
-        "tag": "tor-49",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      },
-      {
-        "protocol": "socks",
-        "sendThrough": "127.0.0.50",
-        "tag": "tor-50",
-        "settings": {
-          "servers": [
-            {
-              "address": "127.0.0.1",
-              "port": 9050
-            }
-          ]
-        }
-      }
-    ],
-    "routing": {
-      "rules": [
-        {
-          "type": "field",
-          "network": "tcp",
-          "balancerTag": "balancer"
-        }
-      ],
-      "balancers": [
-        {
-          "tag": "balancer",
-          "selector": [
-            "tor-"
-          ],
-          "strategy": {
-            "type": "random"
-          }
-        }
-      ]
     }
+  ],
+  "outbounds": [
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.1",
+      "tag": "tor-1",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.2",
+      "tag": "tor-2",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.3",
+      "tag": "tor-3",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.4",
+      "tag": "tor-4",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.5",
+      "tag": "tor-5",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.6",
+      "tag": "tor-6",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.7",
+      "tag": "tor-7",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.8",
+      "tag": "tor-8",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.9",
+      "tag": "tor-9",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.10",
+      "tag": "tor-10",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.11",
+      "tag": "tor-11",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.12",
+      "tag": "tor-12",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.13",
+      "tag": "tor-13",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.14",
+      "tag": "tor-14",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.15",
+      "tag": "tor-15",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.16",
+      "tag": "tor-16",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.17",
+      "tag": "tor-17",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.18",
+      "tag": "tor-18",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.19",
+      "tag": "tor-19",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.20",
+      "tag": "tor-20",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.21",
+      "tag": "tor-21",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.22",
+      "tag": "tor-22",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.23",
+      "tag": "tor-23",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.24",
+      "tag": "tor-24",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.25",
+      "tag": "tor-25",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.26",
+      "tag": "tor-26",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.27",
+      "tag": "tor-27",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.28",
+      "tag": "tor-28",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.29",
+      "tag": "tor-29",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.30",
+      "tag": "tor-30",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.31",
+      "tag": "tor-31",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.32",
+      "tag": "tor-32",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.33",
+      "tag": "tor-33",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.34",
+      "tag": "tor-34",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.35",
+      "tag": "tor-35",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.36",
+      "tag": "tor-36",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.37",
+      "tag": "tor-37",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.38",
+      "tag": "tor-38",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.39",
+      "tag": "tor-39",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.40",
+      "tag": "tor-40",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.41",
+      "tag": "tor-41",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.42",
+      "tag": "tor-42",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.43",
+      "tag": "tor-43",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.44",
+      "tag": "tor-44",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.45",
+      "tag": "tor-45",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.46",
+      "tag": "tor-46",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.47",
+      "tag": "tor-47",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.48",
+      "tag": "tor-48",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.49",
+      "tag": "tor-49",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "socks",
+      "sendThrough": "127.0.0.50",
+      "tag": "tor-50",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 9050
+          }
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "network": "tcp",
+        "balancerTag": "balancer"
+      }
+    ],
+    "balancers": [
+      {
+        "tag": "balancer",
+        "selector": [
+          "tor-"
+        ],
+        "strategy": {
+          "type": "random"
+        }
+      }
+    ]
   }
+}
