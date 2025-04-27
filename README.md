@@ -8,19 +8,19 @@ This repo contains an docker-compose-file which will spawn an aria2ng webinterfa
 ![2021-04-12_Aria2](https://user-images.githubusercontent.com/1722036/114446811-f3760400-9bd1-11eb-9bef-7a17d077326b.PNG)
 
 ## Usage
-First, always change the RPCSECRET in `docker-compose.yml`.
+First, always change the RPCSECRET in `docker-compose.yml` and enter your VPN details.
 
-Afterwards you can run `docker-compose up`, which will start 2 containers, an controller and an downloader with ports bound to localhost. 6800 is the RPC-Port of the downloader, 8080 is the Web-UI. If you want to expose these ports to the internet, just change the port assignment in the `docker-compose.yml` but again, make sure you changed the secret first!
+Afterwards you can run `docker-compose up`, which will start 3 containers, an controller, an downloader with ports bound to localhost and the VPN-Gateway. 6800 is the RPC-Port of the downloader, 8080 is the Web-UI. It is not recommended to expose these ports to the internet.
 
 When you open the Web-UI via `http://localhost:8080`, you should first navigate to `AriaNg Settings`, afterwards click on the tab RPC and adjust the RPCSECRET to the one in the docker-compose-file. Afterwards you can add downloads. After adding if the downloads don't start at once, please give them some seconds to start :)
 
 Your downloads will be in `./downloader/data/`.
 
-## Why keep two containers
+## Why keep three containers
 Yeah, the web-ui could be easily integrated into the downloader-instance. This way you would save some resources BUT in the layout it is right now, you could simply spawn multiple downloader simply by copying the corresponding lines in the docker-compose-file and adding them as RPCs in aria2, resulting in even higher download rates. If you want to integrate the web-ui in the downloader, simply copy the www-dir from the controller to downloader, add the folder in the docker-compose, and add the lines from the nginx.conf of the controller to the downloader.
 
-## VPN-Config
-If you want your containers to use a vpn, user the `docker-composevpnsample.yml` instead of the typical docker-compose file.
+## Without VPN
+If you want your containers to NOT use a vpn, use the `docker-compose_no_vpn.yml` instead of the typical docker-compose file.
 
 ## Credits
 - This dockerfile really helped me in the creation of this solution: https://github.com/abcminiuser/docker-aria2-with-webui
