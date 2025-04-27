@@ -14,5 +14,5 @@ RUN apk add --update --no-cache bash tor tzdata vim autoconf build-base git libg
 && apk add --update --no-cache python3 py3-stem && cd /home && mkdir creatorrc && cd /home/creatorrc && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/creatorrc.py \
 && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/guard_country_resolver.py
 
-CMD ["/run/run_aria2.sh"]
+CMD ["bash", "/run/run_aria2.sh"]
 
