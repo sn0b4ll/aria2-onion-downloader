@@ -5,6 +5,7 @@ services:
       - RPCPORT=6800
       - RPCSECRET=TEST123
       - TORSERVNUM=50
+      - GETTORUA=true
     volumes:
       - ./downloader/conf:/conf
       - ./downloader/log:/log
