@@ -15,6 +15,9 @@ services:
 
   downloader:
     build: downloader
+    depends_on:
+      gluetun:
+        condition: service_healthy
     environment:
       - RPCPORT=6800
       - RPCSECRET=TEST123
