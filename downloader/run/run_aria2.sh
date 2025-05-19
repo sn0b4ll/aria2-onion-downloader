@@ -5,6 +5,7 @@ touch /conf/aria2.session
 touch /log/aria2_log.txt
 touch /log/v2ray_access.log
 touch /log/v2ray_error.log
+touch /log/get_tor_ua.log
 
 echo "Generating V2Ray config based on TORSERVNUM=$TORSERVNUM..."
 
@@ -97,7 +98,15 @@ EOF
 
 echo "V2Ray config generated at /conf/config.json"
 
-python /home/creatorrc/creatorrc.py --speetor && mv -f tor_config.txt /conf/torrc && tor --runasdaemon 1 -f /conf/torrc || tor --runasdaemon 1
+if [ "$GETTORUA" = "true" ]; then
+echo "Getting latest Tor Browser User-Agent..."
+python /run/get_tor_ua.py >> /log/get_tor_ua.log 2>&1
+if [ $? -ne 0 ]; then
+    echo "Warning: get_tor_ua.py script exited with an error. Check /log/get_tor_ua.log"
+  fi
+fi
+
+python /home/creatorrc/creatorrc.py --speetor && mv -f tor_config.txt /conf/torrc && tor --runasdaemon 1 --ControlPort 9051 -f /conf/torrc || tor --runasdaemon 1 --ControlPort 9051
 
 exec v2ray run -c /conf/config.json &
-exec aria2c --conf-path=/conf/aria2.conf --log=/log/aria2_log.txt --rpc-listen-port=${RPCPORT} --rpc-secret=${RPCSECRET} --async-dns=false
+exec aria2c --conf-path=/conf/aria2.conf --log=/log/aria2_log.txt --rpc-listen-port=${RPCPORT} --rpc-secret=${RPCSECRET} --no-want-digest-header=true --header="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" --async-dns=false

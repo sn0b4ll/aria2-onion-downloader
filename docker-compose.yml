@@ -15,10 +15,14 @@ services:
 
   downloader:
     build: downloader
+    depends_on:
+      gluetun:
+        condition: service_healthy
     environment:
       - RPCPORT=6800
       - RPCSECRET=TEST123
       - TORSERVNUM=50
+      - GETTORUA=true
     volumes:
       - ./downloader/conf:/conf
       - ./downloader/log:/log

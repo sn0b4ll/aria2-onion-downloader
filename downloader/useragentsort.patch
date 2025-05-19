@@ -1,0 +1,100 @@
+diff --git a/src/HttpRequest.cc b/src/HttpRequest.cc
+index b5fb4f86..1e2d0ecf 100644
+--- a/src/HttpRequest.cc
++++ b/src/HttpRequest.cc
+@@ -141,6 +141,23 @@ std::string getHostText(const std::string& host, uint16_t port)
+ }
+ } // namespace
+ 
++const static std::vector<std::string> headersSort = {
++  "Host:",
++  "User-Agent:",
++  "Accept:",
++  "Accept-Encoding:",
++  "Referer:",
++  "Connection:",
++  "Cookie:",
++  "Range:",
++  "Authorization:",
++  "Proxy-Authorization:",
++  "Pragma:",
++  "Cache-Control:",
++  "If-Modified-Since:",
++  "Want-Digest:",
++};
++
+ std::string HttpRequest::createRequest()
+ {
+   authConfig_ = authConfigFactory_->createAuthConfig(request_, option_);
+@@ -265,20 +282,46 @@ std::string HttpRequest::createRequest()
+       builtinHds.emplace_back("Want-Digest:", wantDigest);
+     }
+   }
+-  for (const auto& builtinHd : builtinHds) {
+-    auto it = std::find_if(std::begin(headers_), std::end(headers_),
+-                           [&builtinHd](const std::string& hd) {
+-                             return util::istartsWith(hd, builtinHd.first);
+-                           });
+-    if (it == std::end(headers_)) {
+-      requestLine += builtinHd.first;
+-      requestLine += ' ';
+-      requestLine += builtinHd.second;
++  // std::vector<std::string> headersSortCopy(headersSort.begin(), headersSort.end());
++  // for (const auto& hd : builtinHds) {
++  //   builtinHdsMap[hd.first] = hd;
++  //   if (std::find(std::begin(headersSort), std::end(headersSort), hd.first) ==
++  //       std::end(headersSort)) {
++  //     headersSortCopy.push_back(hd.first);
++  //   }
++  // }
++  std::map<std::string, std::pair<std::string, std::string>> builtinHdsMap;
++  for (const auto& hd : builtinHds) {
++    builtinHdsMap[hd.first] = hd;
++  }
++  std::set<std::string> skipHeaders;
++  for (const auto& k : headersSort) {
++    auto it = std::find_if(
++      std::begin(headers_),
++      std::end(headers_),
++      [&k](const std::string& hd) {
++        return util::istartsWith(hd, k);
++      }
++    );
++    if (it != std::end(headers_)) {
++      skipHeaders.insert(*it);
++      requestLine += *it;
+       requestLine += "\r\n";
++    } else {
++      auto builtinHdIt = builtinHdsMap.find(k);
++      if (builtinHdIt != std::end(builtinHdsMap)) {
++        requestLine += builtinHdIt->second.first;
++        requestLine += ' ';
++        requestLine += builtinHdIt->second.second;
++        requestLine += "\r\n";
++      }
+     }
+   }
+   // append additional headers given by user.
+   for (const auto& hd : headers_) {
++    if (skipHeaders.find(hd) != std::end(skipHeaders)) {
++      continue;
++    }
+     requestLine += hd;
+     requestLine += "\r\n";
+   }
+@@ -294,12 +337,12 @@ std::string HttpRequest::createProxyRequest() const
+   requestLine += getURIHost();
+   requestLine += ':';
+   requestLine += util::uitos(getPort());
+-  requestLine += " HTTP/1.1\r\nUser-Agent: ";
+-  requestLine += userAgent_;
+-  requestLine += "\r\nHost: ";
++  requestLine += " HTTP/1.1\r\nHost: ";
+   requestLine += getURIHost();
+   requestLine += ':';
+   requestLine += util::uitos(getPort());
++  requestLine += "\r\nUser-Agent: ";
++  requestLine += userAgent_;
+   requestLine += "\r\n";
+ 
+   if (!proxyRequest_->getUsername().empty()) {
