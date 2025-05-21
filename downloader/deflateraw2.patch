@@ -1,0 +1,13 @@
+diff --git a/src/GZipDecodingStreamFilter.h b/src/GZipDecodingStreamFilter.h
+index d9c3c22e..084ca8ef 100644
+--- a/src/GZipDecodingStreamFilter.h
++++ b/src/GZipDecodingStreamFilter.h
+@@ -49,6 +49,8 @@ private:
+ 
+   bool finished_;
+ 
++  bool rawMode_;
++  
+   size_t bytesProcessed_;
+ 
+   static const size_t OUTBUF_LENGTH = 16_k;
