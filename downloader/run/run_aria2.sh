@@ -100,8 +100,7 @@ echo "V2Ray config generated at /conf/config.json"
 
 if [ "$GETTORUA" = "true" ]; then
 echo "Getting latest Tor Browser User-Agent..."
-python /run/get_tor_ua.py >> /log/get_tor_ua.log 2>&1
-if [ $? -ne 0 ]; then
+if ! python /run/get_tor_ua.py >> /log/get_tor_ua.log 2>&1; then
     echo "Warning: get_tor_ua.py script exited with an error. Check /log/get_tor_ua.log"
   fi
 fi
