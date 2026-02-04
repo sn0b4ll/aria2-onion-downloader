@@ -108,4 +108,30 @@ fi
 python /home/creatorrc/creatorrc.py --speetor && mv -f tor_config.txt /conf/torrc && tor --runasdaemon 1 --ControlPort 9051 -f /conf/torrc || tor --runasdaemon 1 --ControlPort 9051
 
 exec v2ray run -c /conf/config.json &
-exec aria2c --conf-path=/conf/aria2.conf --log=/log/aria2_log.txt --rpc-listen-port=${RPCPORT} --rpc-secret=${RPCSECRET} --no-want-digest-header=true --header="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" --async-dns=false
+
+ARIA2_ARGS=(
+  --conf-path=/conf/aria2.conf
+  --log=/log/aria2_log.txt
+  --rpc-listen-port=${RPCPORT}
+  --rpc-secret=${RPCSECRET}
+  --no-want-digest-header=true
+  --header="Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  --async-dns=false
+)
+
+# If there are any .txt files in /conf, use aria2c -i to read URLs.
+# If multiple .txt files exist, concatenate them into a single temp input file.
+shopt -s nullglob
+txt_files=(/conf/*.txt)
+if [ ${#txt_files[@]} -gt 0 ]; then
+  if [ ${#txt_files[@]} -eq 1 ]; then
+    INPUT_FILE="${txt_files[0]}"
+  else
+    INPUT_FILE="/conf/aria2_input_from_conf.txt"
+    cat "${txt_files[@]}" > "$INPUT_FILE"
+  fi
+  echo "Found ${#txt_files[@]} .txt file(s) in /conf; starting aria2c with -i $INPUT_FILE"
+  exec aria2c "${ARIA2_ARGS[@]}" -i "$INPUT_FILE"
+else
+  exec aria2c "${ARIA2_ARGS[@]}"
+fi
