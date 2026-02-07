@@ -23,7 +23,7 @@ Yeah, the web-ui could be easily integrated into the downloader-instance. This w
 If you want your containers to NOT use a vpn, use the `docker-compose_no_vpn.yml` instead of the typical docker-compose file.
 
 ## Bulk Download
-You can place `.txt`-files containing links in `controller/conf/`. These will be read _only_ on container startup and download the links in the text-file.
+You can place `.txt`-files containing links in `downloader/conf/`. These will be read _only_ on container startup and download the links in the text-file.
 
 ## Credits
 - This dockerfile really helped me in the creation of this solution: https://github.com/abcminiuser/docker-aria2-with-webui
