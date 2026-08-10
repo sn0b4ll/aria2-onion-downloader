@@ -4,7 +4,7 @@ LABEL maintainer="sn0b4ll"
 
 COPY *.patch /home/
 
-COPY --chmod=777 install-release.sh /home/
+COPY --chmod=755 install-release.sh /home/
 
 RUN apk add --update --no-cache bash tor tzdata vim autoconf build-base git libgcc gmp libtool gnutls gnutls-dev nettle libssh2 libssh2-dev ca-certificates c-ares c-ares-dev libxml2 libxml2-dev sqlite-libs sqlite-dev automake cppunit cppunit-dev util-macros gettext gettext-dev zlib zlib-dev curl unzip \
 && /home/install-release.sh && git clone https://github.com/aria2/aria2.git /home/aria2 && patch /home/aria2/src/HttpSkipResponseCommand.cc < /home/500retry.patch && patch /home/aria2/src/DownloadCommand.cc < /home/slowretry.patch && patch /home/aria2/src/OptionHandlerFactory.cc < /home/removeconnlimit.patch \ 
