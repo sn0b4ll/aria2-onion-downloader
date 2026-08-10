@@ -11,7 +11,7 @@ RUN apk add --update --no-cache bash tor tzdata vim autoconf build-base git libg
 && patch /home/aria2/src/SocketBuffer.cc < /home/connclosed.patch && patch /home/aria2/src/HttpRequest.cc < /home/useragentsort.patch && patch /home/aria2/src/GZipDecodingStreamFilter.cc < /home/deflateraw.patch && patch /home/aria2/src/GZipDecodingStreamFilter.h < /home/deflateraw2.patch && patch /home/aria2/src/HttpServerBodyCommand.cc < /home/highcpurpc.patch && patch /home/aria2/src/HttpHeaderProcessor.cc < /home/emptyheadervalue.patch && patch /home/aria2/src/util.cc < /home/cdfix.patch \
 && rm -f /home/*.patch && rm -f /home/install-release.sh \
 && cd /home/aria2 && autoreconf -i && ./configure && make -j`nproc` && make install && rm -rf /home/aria2 \
-&& apk del autoconf build-base git libtool gnutls-dev libssh2-dev c-ares-dev libxml2-dev sqlite-dev automake cppunit-dev util-macros gettext-dev zlib-dev curl unzip \
+&& apk del autoconf build-base git libtool gnutls-dev libssh2-dev c-ares-dev libxml2-dev sqlite-dev automake cppunit-dev util-macros gettext-dev zlib-dev unzip \
 && apk add --update --no-cache python3 py3-stem && cd /home && mkdir creatorrc && cd /home/creatorrc && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/creatorrc.py \
 && aria2c https://raw.githubusercontent.com/hephaest0s/creatorrc/master/guard_country_resolver.py
 
