@@ -120,7 +120,7 @@ ARIA2_ARGS=(
 )
 
 echo "Waiting for Tor to bootstrap on port 9050..."
-while ! curl --socks5-hostname 127.0.0.1:9050 -s https://check.torproject.org/api/ip > /dev/null; do
+while ! curl --socks5-hostname 127.0.0.1:9050 -s -m 5 https://check.torproject.org/api/ip > /dev/null 2>&1; do
   sleep 2
 done
 echo "Tor is ready! Starting aria2..."
