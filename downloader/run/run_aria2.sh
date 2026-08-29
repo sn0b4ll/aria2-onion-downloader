@@ -119,6 +119,12 @@ ARIA2_ARGS=(
   --async-dns=false
 )
 
+echo "Waiting for Tor to bootstrap on port 9050..."
+while ! curl --socks5-hostname 127.0.0.1:9050 -s -m 5 https://check.torproject.org/api/ip > /dev/null 2>&1; do
+  sleep 2
+done
+echo "Tor is ready! Starting aria2..."
+
 # If there are any .txt files in /conf, use aria2c -i to read URLs.
 # If multiple .txt files exist, concatenate them into a single temp input file.
 shopt -s nullglob
